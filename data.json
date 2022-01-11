@@ -1,0 +1,111 @@
+[
+  {
+    "slug": "abs-workout-simple-12321312",
+    "name": "Abs Workout Simple!",
+    "duration": 345,
+    "difficulty": "easy",
+    "sequence": [
+      {
+        "slug": "pushups-213213712",
+        "name": "Pushups",
+        "type": "exercise",
+        "reps": 15,
+        "duration": 60
+      },
+      {
+        "slug": "break-12313123",
+        "name": "Break",
+        "type": "break",
+        "duration": 15
+      },
+      {
+        "slug": "lower-back-stretch-23123421",
+        "name": "Lower back stretch",
+        "type": "stretch",
+        "duration": 120
+      },
+      {
+        "slug": "pull-up-12308277",
+        "name": "Pull Up",
+        "type": "exercise",
+        "reps": 10,
+        "duration": 60
+      },
+      {
+        "slug": "break-123213798",
+        "name": "Breath",
+        "type": "break",
+        "duration": 30
+      },
+      {
+        "slug": "squats-971236798",
+        "name": "Squats",
+        "type": "exercise",
+        "reps": 30,
+        "duration": 60
+      }
+    ]
+  },
+  {
+    "slug": "easy-arm-workout-12317278",
+    "name": "Easy Arm Workout",
+    "duration": 240,
+    "difficulty": "medium",
+    "sequence": [
+      {
+        "slug": "pushups-4876812",
+        "name": "Pushups",
+        "type": "exercise",
+        "reps": 15,
+        "duration": 60
+      },
+      {
+        "slug": "lower-back-stretch-12478712",
+        "name": "Lower back stretch",
+        "type": "stretch",
+        "duration": 120
+      },
+      {
+        "slug": "pull-ups-123214221",
+        "name": "Pull Ups",
+        "type": "exercise",
+        "reps": 10,
+        "duration": 60
+      }
+    ]
+  },
+  {
+    "slug": "cardio-workout-1231283",
+    "name": "Cardio Workout",
+    "duration": 260,
+    "difficulty": "hard",
+    "sequence": [
+      {
+        "slug": "jumping-jacks-1237191",
+        "name": "Jumping Jacks",
+        "type": "exercise",
+        "reps": 100,
+        "duration": 120
+      },
+      {
+        "slug": "breath-1212337191",
+        "name": "Breath",
+        "type": "break",
+        "duration": 10
+      },
+      {
+        "slug": "jumping-jacks-12323214",
+        "name": "Jumping Jacks",
+        "type": "exercise",
+        "reps": 100,
+        "duration": 120
+      },
+      {
+        "slug": "breath-2142123212",
+        "name": "Breath",
+        "type": "break",
+        "duration": 10
+      }
+    ]
+  }
+]

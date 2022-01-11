@@ -7,6 +7,8 @@ export default function HomeScreen({navigation}: NativeStackHeaderProps) {
 
   useEffect(() => {
     console.log("Rending Home Screen");
+
+    return () => console.log("Unmounting Home Screen")
   }, [])
 
   return (

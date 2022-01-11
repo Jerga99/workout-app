@@ -1,14 +1,25 @@
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import data from "../data.json";
 
 export default function HomeScreen({navigation}: NativeStackHeaderProps) {
 
+  const renderItem = ({item}: {item: any}) => (
+    <View>
+      <Text>{item.name}</Text>
+      <Text>{item.difficulty}</Text>
+    </View>
+  )
+
   return (
     <View style={styles.container}>
-      <Text>I am home screen</Text>
-      <Text>{ JSON.stringify(data) }</Text>
+      {/* <Text>I am home screen</Text> */}
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.slug}
+      />
     </View>
   )
 }

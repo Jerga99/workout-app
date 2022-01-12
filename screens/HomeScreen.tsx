@@ -1,5 +1,6 @@
 
 import { View, Text, StyleSheet, FlatList } from "react-native";
+import { MontserratText } from "../components/styled/MonteserratText";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import data from "../data.json";
 import { Workout } from "../types/data";
@@ -10,6 +11,9 @@ export default function HomeScreen({navigation}: NativeStackHeaderProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>New Workouts</Text>
+      <MontserratText>
+        New Workouts
+      </MontserratText>
       <FlatList
         data={data as Workout[]}
         renderItem={WorkoutItem}
@@ -27,7 +31,6 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     marginBottom: 20,
-    fontWeight: "bold",
-    fontFamily: "montserrat-bold"
+    fontWeight: "bold"
   }
 })

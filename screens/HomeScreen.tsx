@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     marginBottom: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: "montserrat-bold"
   }
 })

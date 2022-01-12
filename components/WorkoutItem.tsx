@@ -1,7 +1,7 @@
 
 import { View, Text, StyleSheet } from "react-native";
 import { Workout } from "../types/data";
-import { secToMin } from "../utils/time";
+import { formatSec } from "../utils/time";
 
 export default function WorkoutItem({item}: {item: Workout}) {
   return (
@@ -10,7 +10,7 @@ export default function WorkoutItem({item}: {item: Workout}) {
         style={styles.name}>{item.name}
       </Text>
       <Text
-        style={styles.duration}>Duration: {secToMin(item.duration)} min
+        style={styles.duration}>Duration: {formatSec(item.duration)}
       </Text>
       <Text
         style={styles.difficulty}>Difficulty: {item.difficulty}

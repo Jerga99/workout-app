@@ -9,7 +9,7 @@ export default function HomeScreen({navigation}: NativeStackHeaderProps) {
 
   return (
     <View style={styles.container}>
-      {/* <Text>I am home screen</Text> */}
+      <Text style={styles.header}>New Workouts</Text>
       <FlatList
         data={data as Workout[]}
         renderItem={WorkoutItem}
@@ -21,6 +21,12 @@ export default function HomeScreen({navigation}: NativeStackHeaderProps) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: 20,
+    flex: 1,
+  },
+  header: {
+    fontSize: 20,
+    marginBottom: 20,
+    fontWeight: "bold"
   }
 })

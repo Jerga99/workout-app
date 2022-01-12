@@ -11,9 +11,6 @@ export default function HomeScreen({navigation}: NativeStackHeaderProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>New Workouts</Text>
-      <MontserratText>
-        New Workouts
-      </MontserratText>
       <FlatList
         data={data as Workout[]}
         renderItem={WorkoutItem}

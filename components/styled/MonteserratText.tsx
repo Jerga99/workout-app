@@ -1,11 +1,13 @@
 
+import React from "react";
 import { Text } from "react-native";
 
-export function MontserratText({children}: {children: any}) {
+export function MontserratText(props: Text["props"]) {
 
   return (
-    <Text style={{fontFamily: "montserrat"}}>
-      {children}
-    </Text>
+    <Text
+      {...props}
+      style={[props.style,{fontFamily: "montserrat"}]}
+    />
   )
 }

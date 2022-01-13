@@ -29,6 +29,7 @@ function RootNavigator() {
       <Stack.Screen
         name="WorkoutDetail"
         component={WorkoutDetailScreen}
+        options={{title: "Workout Info"}}
       />
     </Stack.Navigator>
   )

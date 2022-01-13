@@ -2,11 +2,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 
-export default function WorkoutDetailScreen({navigation}: NativeStackHeaderProps) {
+export default function WorkoutDetailScreen({route}: NativeStackHeaderProps) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Workout Detail!</Text>
+      <Text style={styles.header}>Slug - {(route.params as any).slug}</Text>
     </View>
   )
 }

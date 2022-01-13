@@ -1,4 +1,4 @@
-import { containsKey, storeData, getData } from ".";
+import { containsKey, storeData, getData, removeItem } from ".";
 import data from "../data.json";
 import { Workout } from "../types/data";
 
@@ -10,10 +10,13 @@ export const getWorkouts = async (): Promise<Workout[]> => {
 export const initWorkouts = async (): Promise<boolean> => {
   const hasWorkouts = await containsKey("workout-data");
   if (!hasWorkouts) {
-    console.log("Storing data")
     await storeData("workout-data", data);
     return true
   }
 
   return false;
+}
+
+export const clearWorkouts = async () => {
+  await removeItem("workout-data");
 }

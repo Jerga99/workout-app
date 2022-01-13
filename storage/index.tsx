@@ -21,3 +21,12 @@ export const getData = async (key: string) => {
     console.error(e.message);
   }
 }
+
+export const containsKey = async (key: string) => {
+  try {
+    const keys = await AsyncStorage.getAllKeys();
+    return keys.includes(key);
+  } catch (e: any) {
+    console.error(e.message);
+  }
+}

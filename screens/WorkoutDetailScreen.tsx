@@ -1,7 +1,8 @@
 
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { useWorkoutBySlug } from "../hooks/useWorkoutBySlug";
+import { PressableText } from "../components/styled/PressableText";
 
 type DetailParams = {
   route: {
@@ -23,13 +24,10 @@ export default function WorkoutDetailScreen({route}: Navigation) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>{workout.name}</Text>
-      <Pressable
+      <PressableText
         onPress={() => alert("Opening Modal")}
-      >
-        <Text style={{textDecorationLine: "underline"}}>
-          Check Sequence
-        </Text>
-      </Pressable>
+        text="Check Sequence"
+      />
     </View>
   )
 }

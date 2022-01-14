@@ -9,7 +9,6 @@ export const useWorkouts = () => {
 
   useEffect(() => {
     async function getData() {
-      console.log("Getting Data!");
       const _workouts = await getWorkouts();
       setWorkouts(_workouts);
     }

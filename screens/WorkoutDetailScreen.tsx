@@ -1,5 +1,5 @@
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Modal } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { useWorkoutBySlug } from "../hooks/useWorkoutBySlug";
 import { PressableText } from "../components/styled/PressableText";
@@ -28,6 +28,13 @@ export default function WorkoutDetailScreen({route}: Navigation) {
         onPress={() => alert("Opening Modal")}
         text="Check Sequence"
       />
+      <Modal
+        visible={true}
+        transparent={true}
+        animationType="none"
+      >
+        <Text>Hello There!</Text>
+      </Modal>
     </View>
   )
 }

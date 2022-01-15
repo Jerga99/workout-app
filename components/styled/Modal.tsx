@@ -4,7 +4,9 @@ import { View, Text, Modal as DefaultModal, StyleSheet } from "react-native";
 import { PressableText } from "./PressableText";
 
 
-export function Modal() {
+export function Modal({
+  activator: Activator
+}: any) {
   const [isModalVisible, setModalVisible] = useState(false);
 
   return (
@@ -22,10 +24,13 @@ export function Modal() {
           />
         </View>
       </DefaultModal>
-      <PressableText
-        onPress={() => setModalVisible(true)}
-        text="Check Sequence"
-      />
+      { Activator ?
+        <Activator /> :
+        <PressableText
+          onPress={() => setModalVisible(true)}
+          text="Open"
+        />
+      }
     </View>
   )
 }

@@ -1,12 +1,20 @@
 
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { View, Text, Modal as DefaultModal, StyleSheet } from "react-native";
 import { PressableText } from "./PressableText";
+
+type ModalProps = {
+  activator?: FunctionComponent<
+    {
+      handleOpen: () => void
+    }
+  >
+}
 
 
 export function Modal({
   activator: Activator
-}: any) {
+}: ModalProps) {
   const [isModalVisible, setModalVisible] = useState(false);
 
   return (
@@ -25,7 +33,9 @@ export function Modal({
         </View>
       </DefaultModal>
       { Activator ?
-        <Activator /> :
+        <Activator
+          handleOpen={() => setModalVisible(true)}
+        /> :
         <PressableText
           onPress={() => setModalVisible(true)}
           text="Open"

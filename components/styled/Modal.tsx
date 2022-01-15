@@ -8,12 +8,14 @@ type ModalProps = {
     {
       handleOpen: () => void
     }
-  >
+  >,
+  children: React.ReactNode
 }
 
 
 export function Modal({
-  activator: Activator
+  activator: Activator,
+  children
 }: ModalProps) {
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -25,7 +27,7 @@ export function Modal({
         animationType="fade"
       >
         <View style={styles.centerView}>
-          <Text>Hello There!</Text>
+          {children}
           <PressableText
             onPress={() => setModalVisible(false)}
             text="Close"

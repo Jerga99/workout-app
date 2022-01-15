@@ -32,18 +32,9 @@ export default function WorkoutDetailScreen({route}: Navigation) {
             text="Check Sequence"
           />
         }
-      />
-
-      <Modal
-        activator={({handleOpen}) =>
-          <Button
-            onPress={handleOpen}
-            title="Custom Button"
-          />
-        }
-      />
-
-      <Modal />
+      >
+        <Text>Hello There!</Text>
+      </Modal>
     </View>
   )
 }

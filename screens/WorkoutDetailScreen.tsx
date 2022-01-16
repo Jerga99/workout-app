@@ -4,6 +4,8 @@ import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { useWorkoutBySlug } from "../hooks/useWorkoutBySlug";
 import { Modal } from "../components/styled/Modal";
 import { PressableText } from "../components/styled/PressableText";
+import { formatSec } from "../utils/time";
+import { FontAwesome } from "@expo/vector-icons";
 
 type DetailParams = {
   route: {
@@ -33,7 +35,24 @@ export default function WorkoutDetailScreen({route}: Navigation) {
           />
         }
       >
-        <Text>Hello There!</Text>
+        <View>
+          { workout.sequence.map((si, idx) =>
+            <View
+              key={si.slug}
+              style={styles.sequenceItem}
+            >
+              <Text>
+                {si.name} | {si.type} | {formatSec(si.duration)}
+              </Text>
+              { idx !== workout.sequence.length - 1 &&
+                <FontAwesome
+                  name="arrow-down"
+                  size={20}
+                />
+              }
+            </View>
+          )}
+        </View>
       </Modal>
     </View>
   )
@@ -48,5 +67,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 20,
     fontWeight: "bold"
+  },
+  sequenceItem: {
+    alignItems: "center"
   }
 })

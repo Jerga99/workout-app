@@ -6,6 +6,7 @@ import { Modal } from "../components/styled/Modal";
 import { PressableText } from "../components/styled/PressableText";
 import { formatSec } from "../utils/time";
 import { FontAwesome } from "@expo/vector-icons";
+import WorkoutItem from "../components/WorkoutItem";
 
 type DetailParams = {
   route: {
@@ -26,34 +27,38 @@ export default function WorkoutDetailScreen({route}: Navigation) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>{workout.name}</Text>
-      <Modal
-        activator={({handleOpen}) =>
-          <PressableText
-            onPress={handleOpen}
-            text="Check Sequence"
-          />
-        }
+      <WorkoutItem
+        item={workout}
+        childStyles={{marginTop: 10}}
       >
-        <View>
-          { workout.sequence.map((si, idx) =>
-            <View
-              key={si.slug}
-              style={styles.sequenceItem}
-            >
-              <Text>
-                {si.name} | {si.type} | {formatSec(si.duration)}
-              </Text>
-              { idx !== workout.sequence.length - 1 &&
-                <FontAwesome
-                  name="arrow-down"
-                  size={20}
-                />
-              }
-            </View>
-          )}
-        </View>
-      </Modal>
+        <Modal
+          activator={({handleOpen}) =>
+            <PressableText
+              onPress={handleOpen}
+              text="Check Sequence"
+            />
+          }
+        >
+          <View>
+            { workout.sequence.map((si, idx) =>
+              <View
+                key={si.slug}
+                style={styles.sequenceItem}
+              >
+                <Text>
+                  {si.name} | {si.type} | {formatSec(si.duration)}
+                </Text>
+                { idx !== workout.sequence.length - 1 &&
+                  <FontAwesome
+                    name="arrow-down"
+                    size={20}
+                  />
+                }
+              </View>
+            )}
+          </View>
+        </Modal>
+      </WorkoutItem>
     </View>
   )
 }

@@ -1,5 +1,5 @@
 
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { useWorkoutBySlug } from "../hooks/useWorkoutBySlug";
 import { Modal } from "../components/styled/Modal";
@@ -7,6 +7,8 @@ import { PressableText } from "../components/styled/PressableText";
 import { formatSec } from "../utils/time";
 import { FontAwesome } from "@expo/vector-icons";
 import WorkoutItem from "../components/WorkoutItem";
+import { useState } from "react";
+import { SequenceItem } from "../types/data";
 
 type DetailParams = {
   route: {
@@ -19,7 +21,12 @@ type DetailParams = {
 type Navigation = NativeStackHeaderProps & DetailParams
 
 export default function WorkoutDetailScreen({route}: Navigation) {
+  const [sequence, setSequence] = useState<SequenceItem[]>([])
   const workout = useWorkoutBySlug(route.params.slug);
+
+  const addItemToSequence = (idx: number) => {
+    setSequence([...sequence, workout!.sequence[idx]])
+  }
 
   if (!workout) {
     return null;
@@ -60,10 +67,13 @@ export default function WorkoutDetailScreen({route}: Navigation) {
         </Modal>
       </WorkoutItem>
       <View>
-        <FontAwesome
-          name="play-circle-o"
-          size={100}
-        />
+        { sequence.length === 0 &&
+          <FontAwesome
+            name="play-circle-o"
+            size={100}
+            onPress={() => addItemToSequence(0)}
+          />
+        }
       </View>
     </View>
   )

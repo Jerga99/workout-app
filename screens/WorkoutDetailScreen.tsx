@@ -31,6 +31,14 @@ export default function WorkoutDetailScreen({route}: Navigation) {
     trackerIdx >= 0 ? sequence[trackerIdx].duration : -1
   )
 
+  useEffect(() => {
+    if (!workout) { return; }
+    if (trackerIdx === workout.sequence.length - 1) { return; }
+    if (countDown === 0) {
+      addItemToSequence(trackerIdx + 1)
+    }
+  }, [countDown])
+
   const addItemToSequence = (idx: number) => {
     setSequence([...sequence, workout!.sequence[idx]])
     setTrackerIdx(idx)

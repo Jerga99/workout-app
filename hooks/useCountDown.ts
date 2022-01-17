@@ -12,7 +12,6 @@ export function useCountDown(
 
     intervalRef.current = window.setInterval(() => {
       setCountDown((count) => {
-        console.log(count);
         return count - 1;
       })
     }, 50)

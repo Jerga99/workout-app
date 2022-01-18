@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 export function useCountDown(
   idx: number,
-  initialCount: number
+  initialCount: number = -1
 ) {
   const intervalRef = useRef<number>();
   const [countDown, setCountDown] = useState(initialCount);

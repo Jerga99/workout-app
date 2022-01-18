@@ -93,53 +93,55 @@ export default function WorkoutDetailScreen({route}: Navigation) {
           </View>
         </Modal>
       </WorkoutItem>
-      <View style={styles.counterUI}>
-        <View style={styles.counterItem}>
-          { sequence.length === 0 ?
-            <FontAwesome
-              name="play-circle-o"
-              size={100}
-              onPress={() => addItemToSequence(0)}
-            /> :
-            isRunning ?
-            <FontAwesome
-              name="stop-circle-o"
-              size={100}
-              onPress={() => stop()}
-            /> :
-            <FontAwesome
-              name="play-circle-o"
-              size={100}
-              onPress={() => {
-                if (hasReachedEnd) {
-                  addItemToSequence(0);
-                } else {
-                  start(countDown)}
+      <View style={styles.wrapper}>
+        <View style={styles.counterUI}>
+          <View style={styles.counterItem}>
+            { sequence.length === 0 ?
+              <FontAwesome
+                name="play-circle-o"
+                size={100}
+                onPress={() => addItemToSequence(0)}
+              /> :
+              isRunning ?
+              <FontAwesome
+                name="stop-circle-o"
+                size={100}
+                onPress={() => stop()}
+              /> :
+              <FontAwesome
+                name="play-circle-o"
+                size={100}
+                onPress={() => {
+                  if (hasReachedEnd) {
+                    addItemToSequence(0);
+                  } else {
+                    start(countDown)}
+                  }
                 }
-              }
-            />
+              />
+            }
+          </View>
+          { sequence.length > 0 && countDown >= 0 &&
+            <View style={styles.counterItem}>
+              <Text style={{fontSize: 55}}>
+                {
+                  countDown > sequence[trackerIdx].duration ?
+                  startupSeq[countDown - sequence[trackerIdx].duration - 1] :
+                  countDown
+                }
+              </Text>
+            </View>
           }
         </View>
-        { sequence.length > 0 && countDown >= 0 &&
-          <View style={styles.counterItem}>
-            <Text style={{fontSize: 55}}>
-              {
-                countDown > sequence[trackerIdx].duration ?
-                startupSeq[countDown - sequence[trackerIdx].duration - 1] :
-                countDown
-              }
-            </Text>
-          </View>
-        }
-      </View>
-      <View style={{alignItems: "center"}}>
-        <Text style={{fontSize: 60, fontWeight: "bold"}}>
-          { sequence.length === 0 ?
-            "Prepare" :
-            hasReachedEnd ?
-            "Great Job!" : sequence[trackerIdx].name
-          }
-        </Text>
+        <View style={{alignItems: "center"}}>
+          <Text style={{fontSize: 60, fontWeight: "bold"}}>
+            { sequence.length === 0 ?
+              "Prepare" :
+              hasReachedEnd ?
+              "Great Job!" : sequence[trackerIdx].name
+            }
+          </Text>
+        </View>
       </View>
     </View>
   )
@@ -167,5 +169,12 @@ const styles = StyleSheet.create({
   counterItem: {
     flex: 1,
     alignItems: "center"
+  },
+  wrapper: {
+    borderRadius: 10,
+    borderColor: "rgba(0,0,0,0.1)",
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    padding: 10
   }
 })

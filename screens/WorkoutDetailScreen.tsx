@@ -26,7 +26,7 @@ export default function WorkoutDetailScreen({route}: Navigation) {
   const [trackerIdx, setTrackerIdx] = useState(-1);
   const workout = useWorkoutBySlug(route.params.slug);
 
-  const startupSeq = ["3", "2", "1", "Go"]
+  const startupSeq = ["3", "2", "1", "Go"].reverse();
   const { countDown, isRunning, stop, start } = useCountDown(trackerIdx);
 
   useEffect(() => {
@@ -123,7 +123,11 @@ export default function WorkoutDetailScreen({route}: Navigation) {
         { sequence.length > 0 && countDown >= 0 &&
           <View style={styles.counterItem}>
             <Text style={{fontSize: 55}}>
-              {countDown}
+              {
+                countDown > sequence[trackerIdx].duration ?
+                startupSeq[countDown - sequence[trackerIdx].duration - 1] :
+                countDown
+              }
             </Text>
           </View>
         }

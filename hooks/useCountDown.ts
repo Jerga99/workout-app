@@ -16,7 +16,7 @@ export function useCountDown(
         setCountDown((count) => {
           return count - 1;
         })
-      }, 1000)
+      }, 10)
     }
     return cleanup;
   }, [idx, isRunning])

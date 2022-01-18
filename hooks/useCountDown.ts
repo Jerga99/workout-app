@@ -11,15 +11,15 @@ export function useCountDown(
   useEffect(() => {
     if (idx == -1) { return; }
 
-    setIsRunning(true);
-    intervalRef.current = window.setInterval(() => {
-      setCountDown((count) => {
-        return count - 1;
-      })
-    }, 10)
-
+    if (isRunning && !intervalRef.current) {
+      intervalRef.current = window.setInterval(() => {
+        setCountDown((count) => {
+          return count - 1;
+        })
+      }, 10)
+    }
     return cleanup;
-  }, [idx])
+  }, [idx, isRunning])
 
   useEffect(() => {
     setCountDown(initialCount);
@@ -42,6 +42,10 @@ export function useCountDown(
   return {
     countDown,
     isRunning,
-    stop: cleanup
+    stop: cleanup,
+    start: (count?: number) => {
+      setCountDown(count ?? initialCount);
+      setIsRunning(true);
+    }
   };
 }

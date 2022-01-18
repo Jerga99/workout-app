@@ -37,7 +37,14 @@ export default function WorkoutDetailScreen({route}: Navigation) {
   }, [countDown])
 
   const addItemToSequence = (idx: number) => {
-    const newSequence = [...sequence, workout!.sequence[idx]]
+    let newSequence = [];
+
+    if (idx > 0) {
+      newSequence = [...sequence, workout!.sequence[idx]];
+    } else {
+      newSequence = [workout!.sequence[idx]];
+    }
+
     setSequence(newSequence)
     setTrackerIdx(idx)
     start(newSequence[idx].duration);
@@ -104,7 +111,7 @@ export default function WorkoutDetailScreen({route}: Navigation) {
               size={100}
               onPress={() => {
                 if (hasReachedEnd) {
-                  console.log("RESTART COUNTER");
+                  addItemToSequence(0);
                 } else {
                   start(countDown)}
                 }

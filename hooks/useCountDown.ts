@@ -6,10 +6,12 @@ export function useCountDown(
 ) {
   const intervalRef = useRef<number>();
   const [countDown, setCountDown] = useState(initialCount);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     if (idx == -1) { return; }
 
+    setIsRunning(true);
     intervalRef.current = window.setInterval(() => {
       setCountDown((count) => {
         return count - 1;
@@ -31,10 +33,15 @@ export function useCountDown(
 
   const cleanup = () => {
     if (intervalRef.current) {
+      setIsRunning(false);
       window.clearInterval(intervalRef.current)
       intervalRef.current = undefined
     }
   }
 
-  return countDown;
+  return {
+    countDown,
+    isRunning,
+    stop: cleanup
+  };
 }

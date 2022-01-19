@@ -89,13 +89,17 @@ export default function WorkoutForm({
                         key={selection}
                         style={styles.selection}
                         text={selection}
-                        onPressIn={() => setSelectionOn(false)}
+                        onPressIn={() => {
+                          onChange(selection)
+                          setSelectionOn(false)}
+                        }
                       />
                     )}
                   </View> :
                   <TextInput
                     onPressIn={() => setSelectionOn(true)}
                     style={styles.input}
+                    value={value}
                     placeholder="Type"
                   />
                 }

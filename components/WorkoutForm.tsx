@@ -27,63 +27,67 @@ export default function WorkoutForm({
         Exercise Form
       </Text>
       <View>
-        <Controller
-          control={control}
-          rules={{
-            required: true
-          }}
-          name="name"
-          render={({ field: {onChange, value}}) =>
-            <TextInput
-              onChangeText={onChange}
-              value={value}
-              style={styles.input}
-              placeholder="Name"
-            />
-          }
-        />
-        <Controller
-          control={control}
-          rules={{
-            required: true
-          }}
-          name="duration"
-          render={({ field: {onChange, value}}) =>
-            <TextInput
-              onChangeText={onChange}
-              value={value}
-              style={styles.input}
-              placeholder="Duration"
-            />
-          }
-        />
-        <Controller
-          control={control}
-          name="reps"
-          render={({ field: {onChange, value}}) =>
-            <TextInput
-              onChangeText={onChange}
-              value={value}
-              style={styles.input}
-              placeholder="Repetitions"
-            />
-          }
-        />
-        <Controller
-          control={control}
-          rules={{
-            required: true
-          }}
-          name="type"
-          render={({ field: {onChange, value}}) =>
-            <TextInput
-              onChangeText={onChange}
-              value={value}
-              style={styles.input}
-              placeholder="Type"
-            />
-          }
-        />
+        <View style={styles.rowContainer}>
+          <Controller
+            control={control}
+            rules={{
+              required: true
+            }}
+            name="name"
+            render={({ field: {onChange, value}}) =>
+              <TextInput
+                onChangeText={onChange}
+                value={value}
+                style={styles.input}
+                placeholder="Name"
+              />
+            }
+          />
+          <Controller
+            control={control}
+            rules={{
+              required: true
+            }}
+            name="duration"
+            render={({ field: {onChange, value}}) =>
+              <TextInput
+                onChangeText={onChange}
+                value={value}
+                style={styles.input}
+                placeholder="Duration"
+              />
+            }
+          />
+        </View>
+        <View style={styles.rowContainer}>
+          <Controller
+            control={control}
+            name="reps"
+            render={({ field: {onChange, value}}) =>
+              <TextInput
+                onChangeText={onChange}
+                value={value}
+                style={styles.input}
+                placeholder="Repetitions"
+              />
+            }
+          />
+          <Controller
+            control={control}
+            rules={{
+              required: true
+            }}
+            name="type"
+            render={({ field: {onChange, value}}) =>
+              <TextInput
+                onChangeText={onChange}
+                value={value}
+                style={styles.input}
+                placeholder="Type"
+              />
+            }
+          />
+        </View>
         <PressableText
           text="Submit"
           onPress={handleSubmit((data) => {
@@ -102,6 +106,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   input: {
+    flex: 1,
     margin: 2,
     borderWidth: 1,
     height: 30,
@@ -109,4 +114,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "rgba(0,0,0, 0.4)",
   },
+  rowContainer: {
+    flexDirection: "row"
+  }
 })

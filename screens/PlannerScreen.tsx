@@ -6,7 +6,7 @@ import WorkoutForm, { ExerciseForm } from "../components/WorkoutForm";
 export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
 
   const handleFormSubmit = (form: ExerciseForm) => {
-    alert(`${form.name}`)
+    alert(`${form.name} - ${form.duration}`)
   }
 
   return (

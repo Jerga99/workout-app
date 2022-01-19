@@ -17,7 +17,7 @@ export default function WorkoutForm({
   onSubmit
 }: WorkoutProps) {
 
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
 
   return (
     <View style={styles.container}>
@@ -38,6 +38,12 @@ export default function WorkoutForm({
               style={styles.input}
             />
           }
+        />
+        <PressableText
+          text="Submit"
+          onPress={handleSubmit((data) => {
+            onSubmit(data as ExerciseForm);
+          })}
         />
       </View>
     </View>

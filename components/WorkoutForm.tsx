@@ -6,7 +6,9 @@ import { PressableText } from "./styled/PressableText";
 
 export type ExerciseForm = {
   name: string,
-  duration: string
+  duration: string,
+  type: string,
+  reps?: string
 }
 
 type WorkoutProps = {
@@ -52,6 +54,33 @@ export default function WorkoutForm({
               value={value}
               style={styles.input}
               placeholder="Duration"
+            />
+          }
+        />
+        <Controller
+          control={control}
+          name="reps"
+          render={({ field: {onChange, value}}) =>
+            <TextInput
+              onChangeText={onChange}
+              value={value}
+              style={styles.input}
+              placeholder="Repetitions"
+            />
+          }
+        />
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          name="type"
+          render={({ field: {onChange, value}}) =>
+            <TextInput
+              onChangeText={onChange}
+              value={value}
+              style={styles.input}
+              placeholder="Type"
             />
           }
         />

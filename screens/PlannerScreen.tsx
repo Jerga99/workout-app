@@ -1,23 +1,20 @@
 
-import { useEffect } from "react";
-import { View, Text, Button } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
+import WorkoutForm from "../components/WorkoutForm";
 
 export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
 
-  useEffect(() => {
-    console.log("Rending Planner Screen");
-
-    return () => console.log("Unmounting Planner Screen")
-  }, [])
-
   return (
-    <View>
-      <Text>I am planner screen</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate("Home")}
-      />
+    <View style={styles.container}>
+      <WorkoutForm />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20
+  }
+})

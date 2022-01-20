@@ -21,7 +21,8 @@
     "react-dom": "17.0.1",
     "react-hook-form": "^7.24.1",
     "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

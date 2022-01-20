@@ -28,6 +28,19 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
     setSeqItems([...seqItems, sequenceItem]);
   }
 
+  const computeDiff = (exercisesCount: number, workoutDuration: number) => {
+    const intensity = workoutDuration / exercisesCount;
+
+    if (intensity <= 60) {
+      return "hard";
+    } else if (intensity <= 100) {
+      return "normal";
+    } else {
+      return "easy";
+    }
+
+  }
+
   const handleWorkoutSubmit = (form: WorkoutFormData) => {
     if (seqItems.length > 0) {
 
@@ -38,7 +51,7 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
       const workout: Workout = {
         name: form.name,
         slug: slugify(form.name + " " + Date.now(), {lower: true}),
-        difficulty: "easy",
+        difficulty: computeDiff(seqItems.length, duration),
         sequence: [...seqItems],
         duration,
       }

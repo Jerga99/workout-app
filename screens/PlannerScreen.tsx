@@ -6,6 +6,7 @@ import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import ExerciseForm, { ExerciseFormData } from "../components/ExerciseForm";
 import ExerciseItem from "../components/ExerciseItem";
 import { SequenceItem, SequenceType } from "../types/data";
+import { PressableText } from "../components/styled/PressableText";
 
 export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
   const [seqItems, setSeqItems] = useState<SequenceItem[]>([]);
@@ -29,7 +30,18 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
     <View style={styles.container}>
       <FlatList
         data={seqItems}
-        renderItem={ExerciseItem}
+        renderItem={({item, index}) =>
+          <ExerciseItem item={item}>
+            <PressableText
+              text="Remove"
+              onPressIn={() => {
+                const items = [...seqItems];
+                items.splice(index, 1);
+                setSeqItems(items);
+              }}
+            />
+          </ExerciseItem>
+        }
         keyExtractor={item => item.slug}
       />
       <ExerciseForm

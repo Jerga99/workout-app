@@ -1,10 +1,11 @@
 
-import { View, StyleSheet, FlatList, Text } from "react-native";
+import { useState } from "react";
+import slugify from "slugify";
+import { View, StyleSheet, FlatList } from "react-native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import ExerciseForm, { ExerciseFormData } from "../components/ExerciseForm";
+import ExerciseItem from "../components/ExerciseItem";
 import { SequenceItem, SequenceType } from "../types/data";
-import slugify from "slugify";
-import { useState } from "react";
 
 export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
   const [seqItems, setSeqItems] = useState<SequenceItem[]>([]);
@@ -28,9 +29,7 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
     <View style={styles.container}>
       <FlatList
         data={seqItems}
-        renderItem={({item}) =>
-          <Text>{item.name}</Text>
-        }
+        renderItem={ExerciseItem}
         keyExtractor={item => item.slug}
       />
       <ExerciseForm

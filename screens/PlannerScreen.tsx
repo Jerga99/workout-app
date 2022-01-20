@@ -8,12 +8,12 @@ import ExerciseItem from "../components/ExerciseItem";
 import { SequenceItem, SequenceType } from "../types/data";
 import { PressableText } from "../components/styled/PressableText";
 import { Modal } from "../components/styled/Modal";
-import WorkoutForm from "../components/WorkoutForm";
+import WorkoutForm, { WorkoutFormData } from "../components/WorkoutForm";
 
 export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
   const [seqItems, setSeqItems] = useState<SequenceItem[]>([]);
 
-  const handleFormSubmit = (form: ExerciseFormData) => {
+  const handleExerciseSubmit = (form: ExerciseFormData) => {
     const sequenceItem: SequenceItem = {
       slug: slugify(form.name + " " + Date.now(), {lower: true}),
       name: form.name,
@@ -26,6 +26,15 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
     }
 
     setSeqItems([...seqItems, sequenceItem]);
+  }
+
+  const handleWorkoutSubmit = (form: WorkoutFormData) => {
+    const workout = {
+      name: form.name,
+      slug: slugify(form.name + " " + Date.now(), {lower: true}),
+    }
+
+    console.log(workout);
   }
 
   return (
@@ -47,7 +56,7 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
         keyExtractor={item => item.slug}
       />
       <ExerciseForm
-        onSubmit={handleFormSubmit}
+        onSubmit={handleExerciseSubmit}
       />
       <View>
         <Modal
@@ -61,9 +70,7 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
           >
           <View>
             <WorkoutForm
-              onSubmit={(data) => {
-                console.log(data);
-              }}
+              onSubmit={handleWorkoutSubmit}
             />
           </View>
         </Modal>

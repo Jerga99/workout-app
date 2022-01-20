@@ -30,7 +30,8 @@ export default function WorkoutForm({
             onChangeText={onChange}
             value={value}
             style={styles.input}
-            placeholder="Workout name"
+            placeholderTextColor={"rgba(0,0,0,0.4)"}
+            placeholder="Workout Name"
           />
         }
       />
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
     height: 30,
     padding: 5,
     borderRadius: 5,
-    borderColor: "rgba(0,0,0, 0.4)",
+    borderColor: "rgba(0,0,0, 0.4)"
   }
 })

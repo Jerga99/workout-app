@@ -9,6 +9,7 @@ import { SequenceItem, SequenceType, Workout } from "../types/data";
 import { PressableText } from "../components/styled/PressableText";
 import { Modal } from "../components/styled/Modal";
 import WorkoutForm, { WorkoutFormData } from "../components/WorkoutForm";
+import { storeWorkout } from "../storage/workout";
 
 export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
   const [seqItems, setSeqItems] = useState<SequenceItem[]>([]);
@@ -41,7 +42,7 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
 
   }
 
-  const handleWorkoutSubmit = (form: WorkoutFormData) => {
+  const handleWorkoutSubmit = async (form: WorkoutFormData) => {
     if (seqItems.length > 0) {
 
       const duration = seqItems.reduce((acc, item) => {
@@ -56,7 +57,7 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
         duration,
       }
 
-      console.log(workout);
+      await storeWorkout(workout);
     }
 
   }
@@ -95,8 +96,8 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
           { ({handleClose}) =>
             <View>
               <WorkoutForm
-                onSubmit={(data) => {
-                  handleWorkoutSubmit(data);
+                onSubmit={async (data) => {
+                  await handleWorkoutSubmit(data);
                   handleClose();
                   navigation.navigate("Home");
                 }}

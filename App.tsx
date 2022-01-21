@@ -22,3 +22,7 @@ export default function App() {
 
 
 // EAS Build - is a hosted service for building app binaries
+
+// IOS Deployment
+// https://medium.com/nerd-for-tech/your-guide-to-testing-your-expo-react-native-application-on-ios-abbde4086d08
+// https://docs.expo.dev/classic/building-standalone-apps/?redirected

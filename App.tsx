@@ -5,14 +5,12 @@ import Navigation from "./navigation"
 
 export default function App() {
   const isLoaded = useCachedResources();
-  const theme = useColorScheme();
-
-  console.log(theme);
+  const colorScheme = useColorScheme();
 
   if (isLoaded) {
     return (
       <>
-        <Navigation />
+        <Navigation colorScheme={colorScheme} />
         <StatusBar style="auto" />
       </>
     );

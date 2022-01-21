@@ -73,6 +73,7 @@ export default function WorkoutDetailScreen({route}: Navigation) {
             />
           }
         >
+        { () =>
           <View>
             { workout.sequence.map((si, idx) =>
               <View
@@ -91,6 +92,7 @@ export default function WorkoutDetailScreen({route}: Navigation) {
               </View>
             )}
           </View>
+        }
         </Modal>
       </WorkoutItem>
       <View style={styles.wrapper}>

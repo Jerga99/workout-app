@@ -92,11 +92,16 @@ export default function PlannerScreen({navigation}: NativeStackHeaderProps) {
             />
           }
           >
-          <View>
-            <WorkoutForm
-              onSubmit={handleWorkoutSubmit}
-            />
-          </View>
+          { ({handleClose}) =>
+            <View>
+              <WorkoutForm
+                onSubmit={(data) => {
+                  handleWorkoutSubmit(data)
+                  handleClose()
+                }}
+              />
+            </View>
+          }
         </Modal>
       </View>
     </View>

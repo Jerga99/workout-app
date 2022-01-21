@@ -19,3 +19,6 @@ export default function App() {
     return null;
   }
 }
+
+
+// EAS Build - is a hosted service for building app binaries

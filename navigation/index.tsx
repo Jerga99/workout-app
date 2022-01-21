@@ -55,6 +55,7 @@ function BottomTabNavigator() {
         name="Planner"
         component={PlannerScreen}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({color, size}) =>
             <Entypo
               name="add-to-list"
